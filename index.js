@@ -21,20 +21,16 @@ function distanceFromHqInBlocks(someValue) {
   
   // Given the same starting and ending block as the previous test,
   // return the fare for the customer based on distance travelled.
-  function calculatesFarePrice(start, destination) {
-    const distance = distanceTravelledInFeet(start, destination);
-    let fare = 0;
-    
-    if (distance <= 400) {
-      fare = 0; // First 400 feet are free
-    } else if (distance > 400 && distance <= 2000) {
-      fare = 2.56; // 2 cents per foot after the first 400 feet
-    } else if (distance >= 2000 && distance < 2500) {
-      fare = 25; // Flat fare of $25 for a distance over 2000 feet and under 2500 feet
-    } else if (distance >= 2500) {
-      return 'cannot travel that far'; // Scuber does not allow any rides over 2500 feet
-    }
-  
-    return fare.toFixed(2); // Return fare rounded to 2 decimal places
+  let calculatesFarePrice =function (start, destination) {
+    let distance = distanceTravelledInFeet(start,destination)
+
+if (distance <= 400) {
+    return 0;
+} else if (distance > 400 && distance <= 2000){
+   return (distance - 400) * 0.02;
+} else if (distance >2000 && distance <2500) {
+    return 25;
+} else if (distance >2500) {
+    return 'cannot travel that far'
+}
   }
-  
